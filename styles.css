@@ -13,9 +13,9 @@
 }
 
 body {
-    padding-left: 1rem;
+/*    padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1rem;*/
 }
 
 html {
@@ -49,4 +49,26 @@ ul {
 #main-doc {
     padding-top: var(--navbar-offset);
     text-align: justify;
+}
+
+@media only screen and (min-width: 700px) {
+    #container {
+        display: flex;
+        height: 100vh;
+    }
+
+    #navbar {
+        position: unset;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+        align-items: flex-start;
+    }
+
+    #main-doc {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+        overflow: auto;
+    }
 }
