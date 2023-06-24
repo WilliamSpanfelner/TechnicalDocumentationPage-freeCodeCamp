@@ -1,5 +1,5 @@
 :root {
-  --navbar-offset: 9rem;
+  --navbar-offset: 6.5rem;
 
   /* colors */
   --navbar-bkgd: #aba;
@@ -29,16 +29,30 @@ ul {
 }
 
 #navbar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
 
-    z-index: 1;
-    opacity: 0.9;
-    text-align: center;
-
     background-color: var(--navbar-bkgd);
+}
+
+#header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#menu-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 4.5rem;
+    overflow: scroll;
 }
 
 .nav-link {
@@ -59,10 +73,17 @@ ul {
 
     #navbar {
         position: unset;
-        display: flex;
-        flex-direction: column;
         min-width: 300px;
         align-items: flex-start;
+    }
+
+    #header {
+        justify-content: start;
+    }
+
+    #menu-items {
+        align-items: start;
+        height: 100vh;
     }
 
     #main-doc {
