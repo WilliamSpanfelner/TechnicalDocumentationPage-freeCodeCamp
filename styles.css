@@ -1,5 +1,7 @@
 :root {
   --navbar-offset: 6.5rem;
+  --outer: 1rem;
+  --outer-lg: 2rem;
 
   /* colors */
   --navbar-bkgd: #aba;
@@ -16,6 +18,7 @@ body {
 /*    padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 1rem;*/
+    line-height: 1.5;
 }
 
 html {
@@ -61,7 +64,8 @@ ul {
 }
 
 #main-doc {
-    padding-top: var(--navbar-offset);
+    margin-top: var(--navbar-offset);
+    padding: var(--outer);
     text-align: justify;
 }
 
@@ -89,7 +93,8 @@ ul {
     #main-doc {
         display: flex;
         flex-direction: column;
-        padding-top: 0;
+        margin: 0;
+        padding: var(--outer-lg);
         overflow: auto;
     }
 }
