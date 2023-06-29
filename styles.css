@@ -2,6 +2,7 @@
   --navbar-offset: 6.5rem;
   --outer: 1rem;
   --outer-lg: 2rem;
+  --inner: 1rem;
 
   /* colors */
   --navbar-bkgd: #aba;
@@ -12,6 +13,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+article {
+    margin: var(--inner);
 }
 
 body {
@@ -27,8 +32,29 @@ html {
     overflow: scroll;
 }
 
-ul {
+article p {
+    margin: var(--inner) 0;
+}
+
+section ul {
+    list-style: unset;
+    padding-left: 2.5rem;
+}
+
+section li {
+    margin: 1rem 0 0 1rem;
+}
+
+/*ul {
     list-style: none;
+}*/
+
+#code-block {
+	background: #f7f7f7;
+/*	margin: 1rem;
+	padding: 1rem;
+	display: block;
+	line-height: 2;*/
 }
 
 #navbar {
@@ -56,6 +82,7 @@ ul {
     align-items: center;
     height: 4.5rem;
     overflow: scroll;
+    list-style: none;
 }
 
 .nav-link {
