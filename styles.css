@@ -1,5 +1,5 @@
 :root {
-  --navbar-offset: 6.5rem;
+  /*--navbar-offset: 6.5rem;*/
   --outer: 1rem;
   --outer-lg: 2rem;
   --inner: 1rem;
@@ -20,17 +20,16 @@ article {
 }
 
 body {
-/*    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1rem;*/
+    overflow: hidden;
+    height: 100vh;
     line-height: 1.5;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--navbar-offset);
-    overflow: scroll;
-}
+/*html {
+    *//*scroll-behavior: smooth;*//*
+    *//*scroll-padding-top: var(--navbar-offset);*//*
+    *//*overflow: scroll;*//*
+}*/
 
 article p {
     margin: var(--inner) 0;
@@ -49,6 +48,12 @@ section li {
     list-style: none;
 }*/
 
+#document {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
 #code-block {
 	background: #f7f7f7;
 /*	margin: 1rem;
@@ -58,15 +63,10 @@ section li {
 }
 
 #navbar {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
+    flex: initial;
+    text-align: center;
 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
+    border-bottom: inset;
     background-color: var(--navbar-bkgd);
 }
 
@@ -91,25 +91,28 @@ section li {
 }
 
 #main-doc {
-    margin-top: var(--navbar-offset);
+    overflow-y: auto;
+
+    /*margin-top: var(--navbar-offset);*/
     padding: var(--outer);
     text-align: justify;
 }
 
 @media only screen and (min-width: 700px) {
-    #container {
-        display: flex;
-        height: 100vh;
+    #document {
+        flex-direction: row;
     }
 
     #navbar {
-        position: unset;
-        min-width: 300px;
-        align-items: flex-start;
+        min-width: 15rem;
+        /*text-align: start;*/
+        /*position: unset;*/
+        /*min-width: 300px;*/
+        /*align-items: flex-start;*/
     }
 
     #header {
-        justify-content: start;
+        text-align: start;
     }
 
     #menu-items {
@@ -118,10 +121,12 @@ section li {
     }
 
     #main-doc {
-        display: flex;
+        padding-bottom: 100rem;
+/*        display: flex;
         flex-direction: column;
         margin: 0;
         padding: var(--outer-lg);
         overflow: auto;
+        overflow-y: auto;*/
     }
 }
