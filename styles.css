@@ -1,12 +1,13 @@
 :root {
-  /*--navbar-offset: 6.5rem;*/
   --outer: 1rem;
   --outer-lg: 2rem;
+  --outer-sm: 0.5rem;
   --inner: 1rem;
 
   /* colors */
   --navbar-bkgd: #aba;
   --black: #000;
+  --b-color: beige; /*menu-items border color*/
 }
 
 * {
@@ -25,12 +26,6 @@ body {
     line-height: 1.5;
 }
 
-/*html {
-    *//*scroll-behavior: smooth;*//*
-    *//*scroll-padding-top: var(--navbar-offset);*//*
-    *//*overflow: scroll;*//*
-}*/
-
 article p {
     margin: var(--inner) 0;
 }
@@ -43,10 +38,6 @@ section ul {
 section li {
     margin: 1rem 0 0 1rem;
 }
-
-/*ul {
-    list-style: none;
-}*/
 
 #document {
     display: flex;
@@ -63,10 +54,15 @@ section li {
 }
 
 #navbar {
-    flex: initial;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
-    border-bottom: inset;
+/*    flex: initial;
+    text-align: center;*/
+
+    border-bottom: 2px solid; /*inset;*/
+    padding: 0 var(--outer-sm) var(--outer-sm);
     background-color: var(--navbar-bkgd);
 }
 
@@ -74,15 +70,27 @@ section li {
     display: flex;
     width: 100%;
     justify-content: center;
+
+    margin: 0.25rem;
+    font-size: 1.2em;
 }
 
 #menu-items {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 4.5rem;
+    /*align-items: start;*/
+    height: 12rem; /*5.5rem;*/
     overflow: scroll;
     list-style: none;
+
+    border: 1px solid beige;
+}
+
+#menu-items li {
+    width: 100%;
+    padding: var(--outer-sm) var(--outer-lg);
+    text-align: start;
+    border-top: 1px solid var(--b-color);
 }
 
 .nav-link {
@@ -104,7 +112,10 @@ section li {
     }
 
     #navbar {
-        min-width: 15rem;
+        min-width: 17rem;  /* 15rem;*/
+        padding: unset;
+        border-right: 2px solid;
+        border-bottom: unset;
         /*text-align: start;*/
         /*position: unset;*/
         /*min-width: 300px;*/
@@ -112,12 +123,14 @@ section li {
     }
 
     #header {
-        text-align: start;
+        /*text-align: start;*/
+        margin-left: var(--outer-lg);
     }
 
     #menu-items {
         align-items: start;
         height: 100vh;
+        border: unset;
     }
 
     #main-doc {
