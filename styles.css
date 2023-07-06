@@ -31,6 +31,7 @@ article {
 }
 
 body {
+    font-family: sans-serif;
     overflow: hidden;
     height: 100vh;
     line-height: 1.5;
@@ -104,6 +105,11 @@ section li {
 #main-doc {
     overflow-y: auto;
     padding: var(--outer-lg);
+}
+
+/*Reference superscripts*/
+.ref {
+    text-decoration: none;
 }
 
 /* Python keyword */
