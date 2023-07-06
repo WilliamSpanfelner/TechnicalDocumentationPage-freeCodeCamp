@@ -1,11 +1,12 @@
 :root {
-  --outer: 1rem;
-  --outer-lg: 2rem;
   --outer-sm: 0.5rem;
-  --inner: 1rem;
+  --outer-md: 1rem;
+  --outer-lg: 2rem;
+  --outer-xl: 3rem;
 
   /* colors */
   --navbar-bkgd: #aba;
+  --code-block-bkgd: #f7f7f7;
   --black: #000;
   --b-color: beige; /*menu-items border color*/
 }
@@ -17,7 +18,10 @@
 }
 
 article {
-    margin: var(--inner);
+    display: flex;
+    flex-direction: column;
+    gap: var(--outer-md);
+    padding: 0 var(--outer-md);
 }
 
 body {
@@ -26,8 +30,9 @@ body {
     line-height: 1.5;
 }
 
-article p {
-    margin: var(--inner) 0;
+section {
+    display: flex;
+    flex-direction: column;
 }
 
 section ul {
@@ -46,11 +51,11 @@ section li {
 }
 
 #code-block {
-	background: #f7f7f7;
-/*	margin: 1rem;
-	padding: 1rem;
-	display: block;
-	line-height: 2;*/
+	background: var(--code-block-bkgd);
+	margin: var(--outer-md);
+	line-height: 1.5;
+	padding: var(--outer-md);
+	border-radius: var(--outer-md);
 }
 
 #navbar {
@@ -80,7 +85,7 @@ section li {
 
 #menu-items li {
     width: 100%;
-    padding: var(--outer-sm) var(--outer-lg);
+    padding: var(--outer-sm) var(--outer-xl);
     text-align: start;
     border-top: 1px solid var(--b-color);
 }
@@ -92,8 +97,7 @@ section li {
 
 #main-doc {
     overflow-y: auto;
-    padding: var(--outer);
-    text-align: justify;
+    padding: var(--outer-lg);
 }
 
 @media only screen and (min-width: 700px) {
@@ -115,6 +119,10 @@ section li {
     #menu-items {
         align-items: start;
         height: 100vh;
+    }
+
+    #menu-items li {
+        padding: var(--outer-sm) var(--outer-xl);
     }
 
     #main-doc {
