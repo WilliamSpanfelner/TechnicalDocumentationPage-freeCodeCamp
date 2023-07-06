@@ -9,6 +9,12 @@
   --code-block-bkgd: #f7f7f7;
   --black: #000;
   --b-color: beige; /*menu-items border color*/
+    /* code colors */
+  --p-kw: #ff8c00;
+  --p-func: #ff1493;
+  --p-self: #ff69b4;
+  --p-str: #7cfc00;
+  --p-prt: #9370db;
 }
 
 * {
@@ -50,7 +56,7 @@ section li {
     flex-direction: column;
 }
 
-#code-block {
+.code-block {
 	background: var(--code-block-bkgd);
 	margin: var(--outer-md);
 	line-height: 1.5;
@@ -98,6 +104,23 @@ section li {
 #main-doc {
     overflow-y: auto;
     padding: var(--outer-lg);
+}
+
+/* Python keyword */
+p-kw {
+  color: var(--p-kw);
+}
+
+p-bi {
+  color: var(--p-func);
+}
+
+p-slf {
+  color: var(--p-self);
+}
+
+p-str {
+  color: var(--p-str);
 }
 
 @media only screen and (min-width: 700px) {
