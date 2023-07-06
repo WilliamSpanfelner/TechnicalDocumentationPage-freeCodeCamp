@@ -12,7 +12,7 @@
         <header id="header"><h1>Object-Oriented Programming</h1></header>
         <ul id="menu-items">
             <li><a href="#foundations" class="nav-link">Foundations</a></li>
-            <li><a href="#section_2" class="nav-link">Section 2</a></li>
+            <li><a href="#examples" class="nav-link">Examples</a></li>
             <li><a href="#section_3" class="nav-link">Section 3</a></li>
             <li><a href="#section_4" class="nav-link">Section 4</a></li>
             <li><a href="#section_5" class="nav-link">Section 5</a></li>
@@ -42,16 +42,15 @@
                     <p>This technical document will show how to create some object-oriented programs
                         exploring the underlying concepts including a forerunner and component of
                         languages supporting Object-Oriented Programming.</p>
-                    <p> Programming is an art that allows a representation of something, real or imaginary,
-                        such that it may, on some basis, be interacted. The process of
-                        writing programs can be made more intuitive through the application of concepts and
-                        paradigms that also improve their maintainability. Object-Oriented Programming can
-                        solve problems that may be much more difficult to solve otherwise using a strictly
-                        procedural approach.</p>
+                    <p>Programming is an art that allows a representation of something, real or imaginary,
+                        such that it might be interacted with on some basis. The process of writing programs
+                        can be made more intuitive through the application of concepts and paradigms that also
+                        improve their maintainability. Object-Oriented Programming can solve problems that may
+                        be much more difficult to solve otherwise using a strictly procedural approach.</p>
                     <p>It is important to remember that underpinning many languages supporting Object-Oriented
                         Programming, is procedural programming which often coexists in the language. Python is
                         one such language and the sections that follow will utilize Python for the provided
-                        snippets.</p>
+                        snippets and examples.</p>
                     <p>Object programming can make large, complex projects more manageable by:</p>
 
                     <ul>
@@ -75,6 +74,71 @@
                     <div class="code-block">
 <pre>recipe = Recipe()</pre>
                     </div>
+                </article>
+            </section>
+            <section id="examples" class="main-section">
+                <header><h2>Examples</h2></header>
+                <article>
+                    <p>Consider a procedural approach to programming a stack consisting of an array that utilizes
+                    two functions - one function pushes elements onto the array and the other function 'pops' the
+                    last element off. The classic Last In First Out (LIFO) model.</p>
+                    <p>Let's define an array for the stack.</p>
+                    <div class="code-block">
+<pre>stack = []</pre>
+                    </div>
+                    <p>Now let's write the function to push elements onto the array.  The push function takes a value
+                    and appends it to the array.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>def</p-kw><p-name> push</p-name>(value):
+   stack.append(value)
+</pre>
+                    </div>
+
+                    <p>The remaining item is to write a pop function that takes no arguments but returns and deletes
+                        the last array element.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>def</p-kw><p-name> pop</p-name>():
+    element = stack[-<p-int>1</p-int>]
+    <p-kw>del</p-kw> (stack[-<p-int>1</p-int>])
+    <p-kw>return</p-kw> element
+</pre>
+                    </div>
+
+                    <p>Now let's test the stack by pushing three elements onto it and then popping them off again.</p>
+                    <div class="code-block">
+<pre>
+push(<p-int>3</p-int>)
+push(<p-int>2</p-int>)
+push(<p-int>1</p-int>)
+
+<p-prt>print</p-prt>(pop())
+<p-prt>print</p-prt>(pop())
+<p-prt>print</p-prt>(pop())
+</pre>
+                    </div>
+
+                    <p>The results below are shown in the order printed to the console.</p>
+                    <div class="code-block">
+<pre>
+1
+2
+3
+</pre>
+                    </div>
+
+                    <p>The stack works beautifully but, there can only ever be one stack using this
+                    procedural approach.</p>
+                    <ul>
+                        <li>One</li>
+                        <li>Two</li>
+                        <li>Three</li>
+                        <li>Four</li>
+                        <li>Five</li>
+                    </ul>
+
+
 
 
 
@@ -86,6 +150,7 @@
       <p-kw>return</p-kw> <p-str>"I love to cook and code."</p-str>
 </pre>
                     </div>
+
                     <div class="code-block">
 <pre>
 <p-kw>class</p-kw> Recipe():
@@ -93,26 +158,7 @@
       <p-kw>return</p-kw> <p-str>"I love to cook and code."</p-str>
 </pre>
                     </div>-->
-
-
                 </article>
-            </section>
-            <section id="section_2" class="main-section">
-                <header><h2>Section 2</h2></header>
-                <p>Three</p>
-                <p>Four</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
-                    quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
-                    consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
-                    architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
-                <code>Two</code>
-                <ul>
-                    <li>One</li>
-                    <li>Two</li>
-                    <li>Three</li>
-                    <li>Four</li>
-                    <li>Five</li>
-                </ul>
             </section>
             <section id="section_3" class="main-section">
                 <header><h2>Section 3</h2></header>
