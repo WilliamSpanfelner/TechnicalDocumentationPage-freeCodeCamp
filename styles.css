@@ -27,7 +27,11 @@ article {
     display: flex;
     flex-direction: column;
     gap: var(--outer-md);
-    padding: 0 var(--outer-md);
+    padding: var(--outer-md);
+}
+
+article li:nth-child(1) {
+	margin-top: 0;
 }
 
 body {
@@ -59,7 +63,7 @@ section li {
 
 .code-block {
 	background: var(--code-block-bkgd);
-	margin: var(--outer-md);
+	margin: 0 var(--outer-md);
 	line-height: 1.5;
 	padding: var(--outer-md);
 	border-radius: var(--outer-md);
@@ -100,6 +104,12 @@ section li {
 .nav-link {
   color: var(--black);
   text-decoration: none;
+}
+
+#document-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 #main-doc {
