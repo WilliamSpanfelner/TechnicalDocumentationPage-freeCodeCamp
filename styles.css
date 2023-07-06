@@ -6,7 +6,10 @@
 
   /* colors */
   --navbar-bkgd: #aba;
+/*
   --code-block-bkgd: #f7f7f7;
+*/
+  --code-block-bkgd: #1f1f1f;
   --black: #000;
   --b-color: beige; /*menu-items border color*/
     /* code colors */
@@ -15,6 +18,8 @@
   --p-self: #ff69b4;
   --p-str: #7cfc00;
   --p-prt: #9370db;
+  --p-name: #1e90ff;
+  --p-int: #00bfff;
 }
 
 * {
@@ -63,6 +68,7 @@ section li {
 
 .code-block {
 	background: var(--code-block-bkgd);
+	color: var(--b-color);
 	margin: 0 var(--outer-md);
 	line-height: 1.5;
 	padding: var(--outer-md);
@@ -135,8 +141,20 @@ p-slf {
   color: var(--p-self);
 }
 
+p-prt {
+  color: var(--p-prt);
+}
+
 p-str {
   color: var(--p-str);
+}
+
+p-name {
+  color: var(--p-name);
+}
+
+p-int {
+  color: var(--p-int);
 }
 
 @media only screen and (min-width: 700px) {
