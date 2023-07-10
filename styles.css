@@ -11,6 +11,7 @@
 */
   --code-block-bkgd: #1f1f1f;
   --black: #000;
+  --note: #ff4500;
   --b-color: beige; /*menu-items border color*/
     /* code colors */
   --p-kw: #ff8c00;
@@ -37,6 +38,16 @@ article {
 
 article li:nth-child(1) {
 	margin-top: 0;
+}
+
+aside {
+	border: 2px solid var(--note);
+	border-radius: var(--outer-md);
+	padding: var(--outer-md);
+}
+
+.note {
+    margin: 0 var(--outer-md);
 }
 
 body {
@@ -71,8 +82,11 @@ section li {
 	color: var(--b-color);
 	margin: 0 var(--outer-md);
 	line-height: 1.5;
-	padding: var(--outer-md);
 	border-radius: var(--outer-md);
+}
+
+pre {
+    padding: var(--outer-md);
 }
 
 #navbar {
