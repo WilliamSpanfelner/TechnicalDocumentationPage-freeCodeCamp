@@ -14,6 +14,7 @@
   --note: #ff4500;
   --b-color: beige; /*menu-items border color*/
     /* code colors */
+  --p-chr: #32cd32;
   --p-kw: #ff8c00;
   --p-func: #ff1493;
   --p-self: #ff69b4;
@@ -145,6 +146,10 @@ pre {
 /* Python keyword */
 p-kw {
   color: var(--p-kw);
+}
+
+p-chr {
+  color: var(--p-chr);
 }
 
 p-bi {
