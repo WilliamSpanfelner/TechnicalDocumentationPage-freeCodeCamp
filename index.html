@@ -133,9 +133,103 @@ push(<p-int>1</p-int>)
                         <li>There can only ever be one stack using this procedural approach;</li>
                         <li>The data exists separately from the code;</li>
                     </ul>
+                    <h3>Object-oriented thinking</h3>
+                    <p>Now let's think about the problem using an object-oriented approach.  To build a stack
+                        object, an array is required as a property and a "push" and "pop" functions as before.
+                    The difference this time is that all of these features will be encapsulated in one object.</p>
+                    <p>Creating a new object begins with the class keyword and a descriptive name for the object
+                        about to be created, in this case a stack.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Stack:
+</pre>
+                    </div>
+                    <div class="note">
+                        <aside>Note: Convention states that object names be capitalised camel-case.<a class="ref" href="#ref4"><sup>4</sup></a>
+                        </aside>
+                    </div>
+                    <p>The Stack object will have to be initialised with an array which will be named stack.
+                    The initialization is accomplished automatically through the use of a special in-built
+                    function named "__init__" also known as a constructor.  The constructor must have at least
+                        one parameter and by convention the parameter uses the name 'self'. Adding that to our
+                        code will look as follows.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Stack:
+    <p-kw>def </p-kw><p-bi>__init__</p-bi>(<p-slf>self</p-slf>):
+        <p-slf>self</p-slf>.stack = []
+</pre>
+                    </div>
+                    <p>The 'self' parameter is used to represent an instance of a given object and allows the
+                    instances of the object to hold attribute values independently.<a class="ref" href="#ref5"><sup>5
+                        </sup></a></p>
+                    <p>Completing the Stack object requires the addition of the 'push' and 'pop' functions. Essentially, the functions can be copied and pasted into the class object but instantiation must be considered.  Therefore, the self parameter must be inserted as the first parameter in each function's list of parameters.  The self parameter name must also be used to access parameter values. </p>
+                    <p>Adding the push function first will change the class object as below.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Stack:
+    <p-kw>def </p-kw><p-bi>__init__</p-bi>(<p-slf>self</p-slf>):
+        <p-slf>self</p-slf>.stack = []
 
+    <p-kw>def</p-kw><p-name> push</p-name>(<p-slf>self</p-slf>, value):
+        <p-slf>self</p-slf>.stack.append(value)
+</pre>
+                    </div>
+                    <p>Finally, the pop function can be included with the same considerations as used when appending the push function.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Stack:
+    <p-kw>def </p-kw><p-bi>__init__</p-bi>(<p-slf>self</p-slf>):
+        <p-slf>self</p-slf>.stack = []
 
+    <p-kw>def</p-kw><p-name> push</p-name>(<p-slf>self</p-slf>, value):
+        <p-slf>self</p-slf>.stack.append(value)
 
+    <p-kw>def</p-kw><p-name> pop</p-name>(<p-slf>self</p-slf>):
+        element = <p-slf>self</p-slf>.stack[-<p-int>1</p-int>]
+        <p-kw>del</p-kw> <p-slf>self</p-slf>.(stack[-<p-int>1</p-int>])
+        <p-kw>return</p-kw> element
+</pre>
+                    </div>
+                    <p>Testing the new class object is all that remains.  A class instance can be created through assignment like so:</p>
+                    <div class="code-block">
+<pre>
+stack_instance = Stack()
+</pre>
+                    </div>
+                    <p>The instance created above uses familiar function notation.<a class="ref" href="#ref6"><sup>6
+                        </sup></a></p>
+                    <p>The stack array or data attribute and the methods - a method is a function belonging to an object<a class="ref" href="#ref7"><sup>7
+                        </sup></a> - defined in the Stack class object is now accessible in the
+                        <code>stack_instance</code> class instance via dot notation.</p>
+                    <p>Pushing and popping items on and off the stack is as shown below with the print results following the '#' character.</p>
+                    <div class="code-block">
+<pre>
+stack_instance.push(<p-int>3</p-int>)
+stack_instance.push(<p-int>2</p-int>)
+stack_instance.push(<p-int>1</p-int>)
+
+<p-prt>print</p-prt>(stack_instance.pop())  # 1
+<p-prt>print</p-prt>(stack_instance.pop())  # 2
+<p-prt>print</p-prt>(stack_instance.pop())  # 3
+</pre>
+                    </div>
+                    <p>Since no errors were displayed in the execution of the methods contained within the <code>stack_instance</code>
+                        instantiation and the LIFO mechanism appears to be functioning correctly, (excuse the pun), judging by the results
+                        of the console prints, it could be considered safe to assume the code is working.  It is possible to dig a little
+                        deeper to further verify this conclusion.</p>
+                    <p>Lists, as arrays are known in Python, behave in a very predictably.  Using this information we can ask for the
+                        current length of the list, then again after pushing some values on to the stack and finally, after popping them
+                        off again. To do this, it is necessary to access the stack attribute contained within <code>stack_instance</code>
+                        which is possible with dot notation and the commonly known built-in Python function len(array name).  All of the
+                        elements pushed onto the array previously were subsequently popped-off.  Intuitively, then the current length of
+                        the array is expected to be zero.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(len(stack_instance.stack))  # 0
+</pre>
+                    </div>
+                    <p>These expectations satisfied, lets create a new instance to test in parallel with <code>stack_instance</code>.</p>
 
 
 
@@ -215,6 +309,14 @@ push(<p-int>1</p-int>)
                     <a href="https://en.wikipedia.org/w/index.php?title=Single-responsibility_principle&oldid=1129050472">https://en.wikipedia.org/w/index.php?title=Single-responsibility_principle&oldid=1129050472</a></p>
                 <p><sup id="ref3">3</sup> Wikipedia contributors. (2023, June 27). SOLID. In Wikipedia, The Free Encyclopedia. Retrieved 12:01, July 5, 2023, from
                     <a href="https://en.wikipedia.org/w/index.php?title=SOLID&oldid=1162113306">https://en.wikipedia.org/w/index.php?title=SOLID&oldid=1162113306</a></p>
+                <p><sup id="ref4">4</sup> PEP 8 – Style Guide for Python Code. (2013, August 1). Retrieved 16:58, July 7, 2023, from
+                    <a href="https://peps.python.org/pep-0008/#class-names">https://peps.python.org/pep-0008/#class-names</a></p>
+                <p><sup id="ref5">5</sup> The Python Language Reference, 3.3.1 Basic customization, para 3. n.d. Retrieved 13:47, July 9, 2023, from
+                    <a href="https://docs.python.org/3/reference/datamodel.html#index-47">https://docs.python.org/3/reference/datamodel.html#index-47</a></p>
+                <p><sup id="ref6">6</sup> The Python Tutorial, 9 Classes, 9.3.2 Class objects, para 4. n.d. Retrieved 18:40, July 9, 2023, from
+                    <a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></p>
+                <p><sup id="ref7">7</sup> The Python Tutorial, 9 Classes, 9.3.3 Instance objects, para 3. n.d. Retrieved 19:04, July 9, 2023, from
+                    <a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></p>
                 <code>Five</code>
                 <ul>
                     <li>One</li>
