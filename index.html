@@ -226,11 +226,69 @@ stack_instance.push(<p-int>1</p-int>)
                         the array is expected to be zero.</p>
                     <div class="code-block">
 <pre>
-<p-prt>print</p-prt>(len(stack_instance.stack))  # 0
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 0
 </pre>
                     </div>
-                    <p>These expectations satisfied, lets create a new instance to test in parallel with <code>stack_instance</code>.</p>
+                    <p>These expectations satisfied, lets push a few new elements onto the stack array in <code>stack_instance</code> and then get the list length. </p>
+                    <div class="code-block">
+<pre>
+stack_instance.push(<p-chr>"a"</p-chr>)
+stack_instance.push(<p-chr>"b"</p-chr>)
+stack_instance.push(<p-chr>"c"</p-chr>)
 
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 3
+</pre>
+                    </div>
+                    <p>Now if two elements are 'popped-off' we should see the following results.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(stack_instance.pop())  # c
+<p-prt>print</p-prt>(stack_instance.pop())  # b
+
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 1
+</pre>
+                    </div>
+                    <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
+                        instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its stack and perform the same
+                        checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
+                    <div class="code-block">
+<pre>
+tiny_stack = Stack()
+
+tiny_stack.push(<p-int>30</p-int>)
+tiny_stack.push(<p-int>20</p-int>)
+tiny_stack.push(<p-int>10</p-int>)
+
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 3
+</pre>
+                    </div>
+                    <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
+                        instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its stack and perform the same
+                        checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(tiny_stack.pop())  # 10
+
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 2
+</pre>
+                    </div>
+
+                    <p>An additional way to verify that autonomous instances have been created would be to console print the contents of the lists like so. </p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(tiny_stack.stack_list)  # [30, 20]
+
+<p-prt>print</p-prt>(stack_instance.stack_list)  # ['a']
+</pre>
+                    </div>
+                    <p>Comparing the object-oriented approach versus the procedural reveals:</p>
+                    <ul>
+                        <li>a certain portability owing to the encapsulation of the data with the methods acting on the data in the class object;</li>
+                        <li>the ease of creating new instantiations of class objects for different purposes;</li>
+                        <li>an assurance of consistency of operation (i.e. each instance will have the same access to attributes and methods);</li>
+                        <li>a feel of write once use once with regard to procedural programming;</li>
+                        <li>there are no silver bullets leaving the programmer to opt for the correct tool for each project.</li>
+                    </ul>
 
 
 <!--                    <div class="code-block">
