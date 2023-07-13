@@ -87,7 +87,7 @@
                     <div class="code-block">
 <pre>stack = []</pre>
                     </div>
-                    <p>Now let's write the function to push elements onto the array.  The push function takes a value
+                    <p>Now let's write the function to push elements onto the array.  The <code>push</code> function takes a value
                     and appends it to the array.</p>
                     <div class="code-block">
 <pre>
@@ -95,8 +95,7 @@
    stack.append(value)
 </pre>
                     </div>
-
-                    <p>The remaining item is to write a pop function that takes no arguments but returns and deletes
+                    <p>The remaining item is to write a <code>pop</code> function that takes no arguments but returns and deletes
                         the last array element.</p>
                     <div class="code-block">
 <pre>
@@ -135,7 +134,7 @@ push(<p-int>1</p-int>)
                     </ul>
                     <h3>Object-oriented thinking</h3>
                     <p>Now let's think about the problem using an object-oriented approach.  To build a stack
-                        object, an array is required as a property and a "push" and "pop" functions as before.
+                        object, an array is required as a property in addition to <code>push</code> and <code>pop</code> functions as before.
                     The difference this time is that all of these features will be encapsulated in one object.</p>
                     <p>Creating a new object begins with the class keyword and a descriptive name for the object
                         about to be created, in this case a stack.</p>
@@ -148,10 +147,10 @@ push(<p-int>1</p-int>)
                         <aside>Note: Convention states that object names be capitalised camel-case.<a class="ref" href="#ref4"><sup>4</sup></a>
                         </aside>
                     </div>
-                    <p>The Stack object will have to be initialised with an array which will be named stack.
+                    <p>The Stack object will have to be initialised with an array which will be named <code>stack</code>.
                     The initialization is accomplished automatically through the use of a special in-built
                     function named "__init__" also known as a constructor.  The constructor must have at least
-                        one parameter and by convention the parameter uses the name 'self'. Adding that to our
+                        one parameter and by convention the parameter uses the name <code>self</code>. Adding that to our
                         code will look as follows.</p>
                     <div class="code-block">
 <pre>
@@ -160,11 +159,11 @@ push(<p-int>1</p-int>)
         <p-slf>self</p-slf>.stack = []
 </pre>
                     </div>
-                    <p>The 'self' parameter is used to represent an instance of a given object and allows the
+                    <p>The <code>self</code> parameter is used to represent an instance of a given object and allows the
                     instances of the object to hold attribute values independently.<a class="ref" href="#ref5"><sup>5
                         </sup></a></p>
-                    <p>Completing the Stack object requires the addition of the 'push' and 'pop' functions. Essentially, the functions can be copied and pasted into the class object but instantiation must be considered.  Therefore, the self parameter must be inserted as the first parameter in each function's list of parameters.  The self parameter name must also be used to access parameter values. </p>
-                    <p>Adding the push function first will change the class object as below.</p>
+                    <p>Completing the Stack object requires the addition of the <code>push</code> and <code>pop</code> functions. Essentially, the functions can be copied and pasted into the class object but instantiation must be considered.  Therefore, the self parameter must be inserted as the first parameter in each function's list of parameters.  The self parameter name must also be used to access parameter values. </p>
+                    <p>Adding the <code>push</code> function first will change the class object as below.</p>
                     <div class="code-block">
 <pre>
 <p-kw>class</p-kw> Stack:
@@ -175,7 +174,7 @@ push(<p-int>1</p-int>)
         <p-slf>self</p-slf>.stack.append(value)
 </pre>
                     </div>
-                    <p>Finally, the pop function can be included with the same considerations as used when appending the push function.</p>
+                    <p>Finally, the <code>pop</code> function can be included with the same considerations as used when appending the <code>push</code> function.</p>
                     <div class="code-block">
 <pre>
 <p-kw>class</p-kw> Stack:
@@ -199,7 +198,7 @@ stack_instance = Stack()
                     </div>
                     <p>The instance created above uses familiar function notation.<a class="ref" href="#ref6"><sup>6
                         </sup></a></p>
-                    <p>The stack array or data attribute and the methods - a method is a function belonging to an object<a class="ref" href="#ref7"><sup>7
+                    <p>The <code>stack</code> array or data attribute and the methods - a method is a function belonging to an object<a class="ref" href="#ref7"><sup>7
                         </sup></a> - defined in the Stack class object is now accessible in the
                         <code>stack_instance</code> class instance via dot notation.</p>
                     <p>Pushing and popping items on and off the stack is as shown below with the print results following the '#' character.</p>
@@ -220,7 +219,7 @@ stack_instance.push(<p-int>1</p-int>)
                         deeper to further verify this conclusion.</p>
                     <p>Lists, as arrays are known in Python, behave in a very predictably.  Using this information we can ask for the
                         current length of the list, then again after pushing some values on to the stack and finally, after popping them
-                        off again. To do this, it is necessary to access the stack attribute contained within <code>stack_instance</code>
+                        off again. To do this, it is necessary to access the <code>stack</code> attribute contained within <code>stack_instance</code>
                         which is possible with dot notation and the commonly known built-in Python function len(array name).  All of the
                         elements pushed onto the array previously were subsequently popped-off.  Intuitively, then the current length of
                         the array is expected to be zero.</p>
@@ -229,7 +228,7 @@ stack_instance.push(<p-int>1</p-int>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 0
 </pre>
                     </div>
-                    <p>These expectations satisfied, lets push a few new elements onto the stack array in <code>stack_instance</code> and then get the list length. </p>
+                    <p>These expectations satisfied, lets <code>push</code> a few new elements onto the <code>stack</code> array in <code>stack_instance</code> and then get the list length. </p>
                     <div class="code-block">
 <pre>
 stack_instance.push(<p-chr>"a"</p-chr>)
@@ -248,8 +247,14 @@ stack_instance.push(<p-chr>"c"</p-chr>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 1
 </pre>
                     </div>
+<!--
                     <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
                         instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its stack and perform the same
+                        checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
+-->
+                    <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
+                        instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its
+                        <code>stack</code> and perform the same
                         checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
                     <div class="code-block">
 <pre>
@@ -262,9 +267,7 @@ tiny_stack.push(<p-int>10</p-int>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 3
 </pre>
                     </div>
-                    <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
-                        instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its stack and perform the same
-                        checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
+
                     <div class="code-block">
 <pre>
 <p-prt>print</p-prt>(tiny_stack.pop())  # 10
@@ -310,22 +313,34 @@ tiny_stack.push(<p-int>10</p-int>)
             </section>
             <section id="private_attributes" class="main-section">
                 <header><h2>Private Attributes</h2></header>
-                <p>The current form of the Stack class object has a security flaw in that the attributes are accessible
-                from outside the class.  Ideally, the stack list property should only be accessible from within the class
-                object itself.</p>
-                <p>Six</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
-                    quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
-                    consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
-                    architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
-                <code>Three</code>
-                <ul>
-                    <li>One</li>
-                    <li>Two</li>
-                    <li>Three</li>
-                    <li>Four</li>
-                    <li>Five</li>
-                </ul>
+                <article>
+                    <blockquote>"“Private” instance variables that cannot be accessed except from inside an object don’t exist in Python. However, there is a convention that is followed by most Python code: a name prefixed with an
+                    underscore (e.g. _spam) should be treated as a non-public part of the API (whether it is a function,
+                    a method or a data member).<a class="ref" href="#ref8"><sup>8</sup></a>"</blockquote>
+                    <p><strong>Name mangling</strong> is used to access and update overridden attributes without conflicting with subclass definitions. Taking the form
+                        <code>_classname__identifier</code>, name mangling requires the identifier of concern to be prepended with atleast
+                        two underscore characters, and no more than one as a suffix. <q>...name mangling rules are designed mostly to avoid
+                            accidents; it is still possible to access or modify a variable that is
+                            considered private.<a class="ref" href="#ref9"><sup>9</sup></a></q></p>
+                    <p>The current form of the <code>Stack</code> class object has a safety issue in that the attributes
+                        are accessible
+                        from outside the class. Ideally, the <code>stack</code> list property should only be accessible from within
+                        the class
+                        object itself. </p>
+                    <p>Six</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
+                        quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
+                        consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
+                        architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
+                    <code>Three</code>
+                    <ul>
+                        <li>One</li>
+                        <li>Two</li>
+                        <li>Three</li>
+                        <li>Four</li>
+                        <li>Five</li>
+                    </ul>
+                </article>
             </section>
             <section id="section_4" class="main-section">
                 <header><h2>Section 4</h2></header>
@@ -377,6 +392,10 @@ tiny_stack.push(<p-int>10</p-int>)
                     <a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></p>
                 <p><sup id="ref7">7</sup> The Python Tutorial, 9 Classes, 9.3.3 Instance objects, para 3. n.d. Retrieved 19:04, July 9, 2023, from
                     <a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></p>
+                <p><sup id="ref8">8</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 1. n.d. Retrieved 11:39, July 13, 2023, from
+                    <a href="https://docs.python.org/3/tutorial/classes.html#private-variables">https://docs.python.org/3/tutorial/classes.html#private-variables</a></p>
+                <p><sup id="ref9">9</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 5. n.d. Retrieved 14:09, July 13, 2023, from
+                    <a href="https://docs.python.org/3/tutorial/classes.html#private-variables">https://docs.python.org/3/tutorial/classes.html#private-variables</a></p>
                 <code>Five</code>
 
 
