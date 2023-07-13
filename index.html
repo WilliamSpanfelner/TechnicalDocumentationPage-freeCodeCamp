@@ -247,11 +247,6 @@ stack_instance.push(<p-chr>"c"</p-chr>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 1
 </pre>
                     </div>
-<!--
-                    <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
-                        instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its stack and perform the same
-                        checks as previously, remembering that <code>stack_instance.stack</code> already has 1 element with the value "a".</p>
--->
                     <p>Of course, a benefit of creating a class object is gaining the ability to create many instances. So it would be good to check that these
                         instances behave independently. Let's create a <code>tiny_stack</code> instance, add some elements to its
                         <code>stack</code> and perform the same
@@ -319,26 +314,55 @@ tiny_stack.push(<p-int>10</p-int>)
                     a method or a data member).<a class="ref" href="#ref8"><sup>8</sup></a>"</blockquote>
                     <p><strong>Name mangling</strong> is used to access and update overridden attributes without conflicting with subclass definitions. Taking the form
                         <code>_classname__identifier</code>, name mangling requires the identifier of concern to be prepended with atleast
-                        two underscore characters, and no more than one as a suffix. <q>...name mangling rules are designed mostly to avoid
+                        two underscore characters, and no more than one as a suffix. <q>...Name mangling rules are designed mostly to avoid
                             accidents; it is still possible to access or modify a variable that is
                             considered private.<a class="ref" href="#ref9"><sup>9</sup></a></q></p>
                     <p>The current form of the <code>Stack</code> class object has a safety issue in that the attributes
-                        are accessible
-                        from outside the class. Ideally, the <code>stack</code> list property should only be accessible from within
-                        the class
-                        object itself. </p>
-                    <p>Six</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
-                        quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
-                        consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
-                        architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
-                    <code>Three</code>
+                        are accessible from outside the class. Ideally, the <code>stack</code> list property should only
+                        be accessible from within the class object itself.  A name mangling type solution can at least approximate a private
+                        attribute in terms of safety through a special access syntax.  The <code>push</code> and <code>pop</code> methods
+                        need to be accessible as they are and therefore require no amendments.</p>
+                    <p>The following illustrates the necessary adjustments to create this private attribute for use with name mangling.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Stack:
+    <p-kw>def </p-kw><p-bi>__init__</p-bi>(<p-slf>self</p-slf>):
+        <p-slf>self</p-slf>.__stack = []
+
+    <p-kw>def</p-kw><p-name> push</p-name>(<p-slf>self</p-slf>, value):
+        <p-slf>self</p-slf>.__stack.append(value)
+
+    <p-kw>def</p-kw><p-name> pop</p-name>(<p-slf>self</p-slf>):
+        element = <p-slf>self</p-slf>.__stack[-<p-int>1</p-int>]
+        <p-kw>del</p-kw> <p-slf>self</p-slf>.__stack[-<p-int>1</p-int>]
+        <p-kw>return</p-kw> element
+</pre>
+                    </div>
+
+                    <p>Now anytime the <code>__stack</code> list is referenced from outside the class, the name mangling syntax must be used
+                        otherwise an <code>AttributeError</code> will be raised.  A new instance can now be created, <code>push</code> some items to the
+                        <code>__stack</code>, <code>pop</code> an item from the stack and print the length of the <code>__stack</code>
+                    to the console.</p>
+                    <div class="code-block">
+<pre>
+stack_instance = Stack()
+
+stack_instance.push(<p-int>3</p-int>)
+stack_instance.push(<p-int>2</p-int>)
+stack_instance.push(<p-int>1</p-int>)
+
+<p-prt>print</p-prt>(stack_instance.pop())  # 1
+
+<p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance._Stack__stack))  # 2
+</pre>
+                    </div>
+                    <p>In summary, encapsulation of data and functions in an object is fundamental to object-oriented programming.  In Python:</p>
                     <ul>
-                        <li>One</li>
-                        <li>Two</li>
-                        <li>Three</li>
-                        <li>Four</li>
-                        <li>Five</li>
+                        <li>it is not possible to make attributes truly private in the way it is in Swift and other languages;</li>
+                        <li>private or protected attributes make it possible for subclasses to override attributes in a more controlled way;</li>
+                        <li>it is possible to add an element of safety through the use of name mangling;</li>
+                        <li>name mangling helps to avoid amending attributes accidentally;</li>
+                        <li>if the name mangling syntax is not employed an <code>AttributeError</code> is raised;</li>
                     </ul>
                 </article>
             </section>
