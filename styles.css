@@ -6,8 +6,9 @@
 
   /* colors */
   --navbar-bkgd: #aba;
+  --blockquote: #979797;
 /*
-  --code-block-bkgd: #f7f7f7;
+#f7f7f7;
 */
   --code-block-bkgd: #1f1f1f;
   --black: #000;
@@ -45,6 +46,13 @@ aside {
 	border: 2px solid var(--note);
 	border-radius: var(--outer-md);
 	padding: var(--outer-md);
+}
+
+blockquote {
+    color: var(--blockquote);
+    line-height: 2.5rem;
+    font-size: 1.8rem;
+    margin: 0 var(--outer-lg);
 }
 
 .note {
