@@ -14,7 +14,7 @@
             <li><a href="#foundations" class="nav-link">Foundations</a></li>
             <li><a href="#examples" class="nav-link">Examples</a></li>
             <li><a href="#private_attributes" class="nav-link">Private Attributes</a></li>
-            <li><a href="#section_4" class="nav-link">Section 4</a></li>
+            <li><a href="#properties" class="nav-link">Properties</a></li>
             <li><a href="#section_5" class="nav-link">Section 5</a></li>
             <li><a href="#references" class="nav-link">References</a></li>
         </ul>
@@ -366,23 +366,68 @@ stack_instance.push(<p-int>1</p-int>)
                     </ul>
                 </article>
             </section>
-            <section id="section_4" class="main-section">
-                <header><h2>Section 4</h2></header>
+            <section id="properties" class="main-section">
+                <header><h2>Properties</h2></header>
                 <article>
-                    <p>Seven</p>
-                    <p>Eight</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
-                        quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
-                        consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
-                        architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
-                    <code>Four</code>
+                    <h3>Instance variables</h3>
+                    <p>Properties can be added to a class object with a constructor as shown above with the Stack class, or properties can
+                    be added at anytime during the object's life cycle.  The following considerations should be kept in mind:
+                    </p>
                     <ul>
-                        <li>One</li>
-                        <li>Two</li>
-                        <li>Three</li>
-                        <li>Four</li>
-                        <li>Five</li>
+                        <li>different sets of properties may be contained within different class instances of the same class object; </li>
+                        <li>each object has its own independent properties;</li>
+                        <li>specific objects can be queried for required properties;</li>
                     </ul>
+                    <p>Let's illustrate the concept of <strong>instance variables</strong> with a new class object named <code>Parking</code>.
+                    A <code>Parking</code> object by default will have a space large enough for one car and will have a
+                        <code>set_garage</code> method to set the space inside a garage.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Parking:
+   <p-kw>def</p-kw> <p-bi>__init__</p-bi>(<p-slf>self</p-slf>, val=<p-int>1</p-int>):
+      <p-slf>self</p-slf>.spaces = val
+
+   <p-kw>def</p-kw> <p-name>set_garage</p-name>(<p-slf>self</p-slf>, val=<p-kw>False</p-kw>):
+      <p-slf>self</p-slf>.garage = val
+      <p-kw>return</p-kw> <p-slf>self</p-slf>.garage
+</pre>
+                    </div>
+                    <p>Now let's create a <code>my_parking</code> instance of the class object and print its properties to the console.</p>
+                    <div class="code-block">
+<pre>
+my_parking = Parking()
+
+<p-prt>print</p-prt>(my_parking.spaces)  # 1
+<p-prt>print</p-prt>(my_parking.set_garage())  # False
+</pre>
+                    </div>
+                    <p>The writeable object properties<a class="ref" href="#ref10"><sup>10</sup></a> can be viewed with the
+                        <code>__dict__</code> special attribute that all class objects/instances take by default.  This dictionary includes
+                    all of the attributes created previously as shown below.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(my_parking.<p-bi>__dict__</p-bi>)  # {'spaces': 1, 'garage': False}
+</pre>
+                    </div>
+                    <p>A new property can be added to the <code>my_parking</code> instance through the use of dot notation.  Adding a
+                        <code>has_lighting</code> property is simply a matter of assigning it a value and to check the successful assignment
+                    it can be printed to the console and viewing the instance dictionary.</p>
+                    <div class="code-block">
+<pre>
+my_parking.has_lighting = <p-kw>True</p-kw>
+<p-prt>print</p-prt>(my_parking.has_lighting)  # True
+
+<p-prt>print</p-prt>(my_parking.<p-bi>__dict__</p-bi>)  # {'spaces': 1, 'garage': False, 'has_lighting': True}
+</pre>
+                    </div>
+                    <p>Interestingly, the dictionary values can be amended in the traditional way as follows.</p>
+                    <div class="code-block">
+<pre>
+my_parking.<p-bi>__dict__</p-bi>[<p-chr>'spaces'</p-chr>] = <p-int>5</p-int>
+<p-prt>print</p-prt>(my_parking.<p-bi>__dict__</p-bi>)  # {'spaces': 5, 'garage': False, 'has_lighting': True}
+</pre>
+                    </div>
+                    <h3>Class variables</h3>
                 </article>
             </section>
             <section id="section_5" class="main-section">
@@ -442,6 +487,10 @@ stack_instance.push(<p-int>1</p-int>)
                     <p><sup id="ref9">9</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 5. n.d.
                         Retrieved 14:09, July 13, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#private-variables">https://docs.python.org/3/tutorial/classes.html#private-variables</a>
+                    </p>
+                    <p><sup id="ref10">10</sup> The Python Standard Library, Built-in Types, Special Attributes, para 2. n.d.
+                        Retrieved 20:49, July 14, 2023, from
+                        <a href="https://docs.python.org/3/library/stdtypes.html#special-attributes">https://docs.python.org/3/library/stdtypes.html#special-attributes</a>
                     </p>
                     <code>Five</code>
 
