@@ -428,6 +428,62 @@ my_parking.<p-bi>__dict__</p-bi>[<p-chr>'spaces'</p-chr>] = <p-int>5</p-int>
 </pre>
                     </div>
                     <h3>Class variables</h3>
+                    <p>The <strong>instance variable</strong> examples above illustrates that they store instance specific data.
+                        <strong>Class variables</strong> apply to all instances to reflect class-wide data.<a class="ref" href="#ref11"><sup>11</sup></a></p>
+                    <p>Assuming that the <code>Parking</code> object is needed to track the total number of spaces available, in other words, each time an
+                        instance is created a class variable is updated with the number of parking spaces contributed by the instance.  The value held by
+                    the class variable can then be returned on request.  Let's amend the class definition as follows.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Parking:
+   total_spaces = 0  # track total number of spaces created by all Parking instances
+
+   <p-kw>def</p-kw> <p-bi>__init__</p-bi>(<p-slf>self</p-slf>, val=<p-int>1</p-int>):
+      <p-slf>self</p-slf>.spaces = val
+      Parking.total_spaces += val  # add parking spaces val to total spaces.
+
+   <p-kw>def</p-kw> <p-name>set_garage</p-name>(<p-slf>self</p-slf>, val=<p-kw>False</p-kw>):
+      <p-slf>self</p-slf>.garage = val
+      <p-kw>return</p-kw> <p-slf>self</p-slf>.garage
+</pre>
+                    </div>
+                    <p>Now let's test the class object by creating a couple of instances and printing the values of <code>total_spaces</code>
+                    to the console.</p>
+                    <div class="code-block">
+<pre>
+sams_parking = Parking()
+<p-prt>print</p-prt>(Parking.total_spaces)  # 1
+
+amys_parking = Parking(<p-int>10</p-int>)
+<p-prt>print</p-prt>(Parking.total_spaces)  # 11
+</pre>
+                    </div>
+                    <p>Clarifying the code above, the <code>sams_parking</code> instance will create one parking space by default.
+                        An additional ten spaces are created on the instantiation of <code>amys_parking</code>, hence the value of
+                        <samp>11</samp> printed to the console.</p>
+                    <p>To further show that the class variable is independent of any particular instance lets print the <code>__dict__</code>
+                    object to the console for both instances created previously.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(sams_parking.<p-bi>__dict__</p-bi>)  # {'spaces': 1}
+<p-prt>print</p-prt>(amys_parking.<p-bi>__dict__</p-bi>)  # {'spaces': 10}
+</pre>
+                    </div>
+                    <p>The console prints reveal the same instance variable for each instance with the instantiation value held for
+                        <code>sams_parking</code> and <code>amys_parking</code>, but no key for <code>total_spaces</code>.  However,
+                        if the <code>__dict__</code> for the <code>Parking</code> class object is printed to the console, the key-value
+                    pair for the <code>total_spaces</code> class variable is present including the expected corresponding value as
+                        shown below.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(Parking.<p-bi>__dict__</p-bi>)  # {'__module__': '__main__', 'total_spaces': 11, '__init__': ...}
+</pre>
+                    </div>
+                    <p>In conclusion, <strong>instance variables</strong> are utilized for object instances, while <strong>class variables</strong> 
+                    are defined to apply across an entire class of objects.  Care is required when a class variable is declared, in terms of 
+                    its true meaning and how it might be managed.  Consider the case where a <code>parking</code> instance is no longer required.
+                    There is no mechanism in place to adjust the <code>total_spaces</code> class variable if an instance were discarded.</p>
+
                 </article>
             </section>
             <section id="section_5" class="main-section">
@@ -492,8 +548,10 @@ my_parking.<p-bi>__dict__</p-bi>[<p-chr>'spaces'</p-chr>] = <p-int>5</p-int>
                         Retrieved 20:49, July 14, 2023, from
                         <a href="https://docs.python.org/3/library/stdtypes.html#special-attributes">https://docs.python.org/3/library/stdtypes.html#special-attributes</a>
                     </p>
-                    <code>Five</code>
-
+                    <p><sup id="ref11">11</sup> The Python Tutorial, 9 Classes, 9.3.5 Class and Instance Variables, para 1. n.d.
+                        Retrieved 14:09, July 13, 2023, from
+                        <a href="https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables">https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables</a>
+                    </p>
 
                     <a href="#cite_note-ub-old-web-solid-1">[1]</a>
                 </article>
