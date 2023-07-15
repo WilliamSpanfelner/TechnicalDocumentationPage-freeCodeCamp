@@ -105,7 +105,6 @@
     <p-kw>return</p-kw> element
 </pre>
                     </div>
-
                     <p>Now let's test the stack by pushing three elements onto it and then popping them off again.</p>
                     <div class="code-block">
 <pre>
@@ -118,7 +117,6 @@ push(<p-int>1</p-int>)
 <p-prt>print</p-prt>(pop())
 </pre>
                     </div>
-
                     <p>The results below are shown in the order printed to the console.</p>
                     <div class="code-block">
 <pre>
@@ -262,7 +260,6 @@ tiny_stack.push(<p-int>10</p-int>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 3
 </pre>
                     </div>
-
                     <div class="code-block">
 <pre>
 <p-prt>print</p-prt>(tiny_stack.pop())  # 10
@@ -270,7 +267,6 @@ tiny_stack.push(<p-int>10</p-int>)
 <p-prt>print</p-prt>(<p-prt>len</p-prt>(stack_instance.stack))  # 2
 </pre>
                     </div>
-
                     <p>An additional way to verify that autonomous instances have been created would be to console print the contents of the lists like so. </p>
                     <div class="code-block">
 <pre>
@@ -287,7 +283,6 @@ tiny_stack.push(<p-int>10</p-int>)
                         <li>a feel of write once use once with regard to procedural programming;</li>
                         <li>there are no silver bullets leaving the programmer to opt for the correct tool for each project.</li>
                     </ul>
-
 
 <!--                    <div class="code-block">
 <pre>
@@ -479,6 +474,15 @@ amys_parking = Parking(<p-int>10</p-int>)
 <p-prt>print</p-prt>(Parking.<p-bi>__dict__</p-bi>)  # {'__module__': '__main__', 'total_spaces': 11, '__init__': ...}
 </pre>
                     </div>
+                    <p>Interestingly, there is a built-in function named <code>hasattr</code> that takes two arguments:
+                        an instance name and a variable name; and returns a boolean corresponding to whether the variable name is an
+                    attribute of the class instance.<a class="ref" href="#ref12"><sup>12</sup></a></p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(<p-prt>hasattr</p-prt>(amys_parking, <p-chr>'spaces'</p-chr>))  # True
+<p-prt>print</p-prt>(<p-prt>hasattr</p-prt>(amys_parking, <p-chr>'some_variable'</p-chr>))  # False
+</pre>
+                    </div>
                     <p>In conclusion, <strong>instance variables</strong> are utilized for object instances, while <strong>class variables</strong> 
                     are defined to apply across an entire class of objects.  Care is required when a class variable is declared, in terms of 
                     its true meaning and how it might be managed.  Consider the case where a <code>parking</code> instance is no longer required.
@@ -551,6 +555,10 @@ amys_parking = Parking(<p-int>10</p-int>)
                     <p><sup id="ref11">11</sup> The Python Tutorial, 9 Classes, 9.3.5 Class and Instance Variables, para 1. n.d.
                         Retrieved 14:09, July 13, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables">https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables</a>
+                    </p>
+                    <p><sup id="ref12">12</sup>The Python Standard Library, Built-in Functions, hasattr, para 1. n.d.,
+                        Retrieved 21:01, July 15, 2023, from
+                        <a href="https://docs.python.org/3/library/functions.html#hasattr">https://docs.python.org/3/library/functions.html#hasattr</a>
                     </p>
 
                     <a href="#cite_note-ub-old-web-solid-1">[1]</a>
