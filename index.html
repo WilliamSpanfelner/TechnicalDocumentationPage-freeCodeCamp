@@ -15,7 +15,7 @@
             <li><a href="#examples" class="nav-link">Examples</a></li>
             <li><a href="#private_attributes" class="nav-link">Private Attributes</a></li>
             <li><a href="#properties" class="nav-link">Properties</a></li>
-            <li><a href="#section_5" class="nav-link">Section 5</a></li>
+            <li><a href="#methods" class="nav-link">Methods</a></li>
             <li><a href="#references" class="nav-link">References</a></li>
         </ul>
     </nav>
@@ -146,10 +146,10 @@ push(<p-int>1</p-int>)
                         </aside>
                     </div>
                     <p>The Stack object will have to be initialised with an array which will be named <code>stack</code>.
-                    The initialization is accomplished automatically through the use of a special in-built
-                    function named "__init__" also known as a constructor.  The constructor must have at least
-                        one parameter and by convention the parameter uses the name <code>self</code>. Adding that to our
-                        code will look as follows.</p>
+                    The initialization is accomplished automatically<a class="ref" href="#ref5"><sup>5</sup></a>
+                    through the use of a special in-built function named "__init__" also known as a constructor.  The constructor
+                    must have at least one parameter and by convention the parameter uses the name <code>self</code>. Adding
+                    that to our code will look as follows.</p>
                     <div class="code-block">
 <pre>
 <p-kw>class</p-kw> Stack:
@@ -158,7 +158,7 @@ push(<p-int>1</p-int>)
 </pre>
                     </div>
                     <p>The <code>self</code> parameter is used to represent an instance of a given object and allows the
-                    instances of the object to hold attribute values independently.<a class="ref" href="#ref5"><sup>5
+                    instances of the object to hold attribute values independently.<a class="ref" href="#ref6"><sup>6
                         </sup></a></p>
                     <p>Completing the Stack object requires the addition of the <code>push</code> and <code>pop</code> functions. Essentially, the functions can be copied and pasted into the class object but instantiation must be considered.  Therefore, the self parameter must be inserted as the first parameter in each function's list of parameters.  The self parameter name must also be used to access parameter values. </p>
                     <p>Adding the <code>push</code> function first will change the class object as below.</p>
@@ -194,9 +194,9 @@ push(<p-int>1</p-int>)
 stack_instance = Stack()
 </pre>
                     </div>
-                    <p>The instance created above uses familiar function notation.<a class="ref" href="#ref6"><sup>6
+                    <p>The instance created above uses familiar function notation.<a class="ref" href="#ref7"><sup>7
                         </sup></a></p>
-                    <p>The <code>stack</code> array or data attribute and the methods - a method is a function belonging to an object<a class="ref" href="#ref7"><sup>7
+                    <p>The <code>stack</code> array or data attribute and the methods - a method is a function belonging to an object<a class="ref" href="#ref8"><sup>8
                         </sup></a> - defined in the Stack class object is now accessible in the
                         <code>stack_instance</code> class instance via dot notation.</p>
                     <p>Pushing and popping items on and off the stack is as shown below with the print results following the '#' character.</p>
@@ -306,12 +306,12 @@ tiny_stack.push(<p-int>10</p-int>)
                 <article>
                     <blockquote>"“Private” instance variables that cannot be accessed except from inside an object don’t exist in Python. However, there is a convention that is followed by most Python code: a name prefixed with an
                     underscore (e.g. _spam) should be treated as a non-public part of the API (whether it is a function,
-                    a method or a data member).<a class="ref" href="#ref8"><sup>8</sup></a>"</blockquote>
+                    a method or a data member).<a class="ref" href="#ref9"><sup>9</sup></a>"</blockquote>
                     <p><strong>Name mangling</strong> is used to access and update overridden attributes without conflicting with subclass definitions. Taking the form
                         <code>_classname__identifier</code>, name mangling requires the identifier of concern to be prepended with atleast
                         two underscore characters, and no more than one as a suffix. <q>...Name mangling rules are designed mostly to avoid
                             accidents; it is still possible to access or modify a variable that is
-                            considered private.<a class="ref" href="#ref9"><sup>9</sup></a></q></p>
+                            considered private.<a class="ref" href="#ref10"><sup>10</sup></a></q></p>
                     <p>The current form of the <code>Stack</code> class object has a safety issue in that the attributes
                         are accessible from outside the class. Ideally, the <code>stack</code> list property should only
                         be accessible from within the class object itself.  A name mangling type solution can at least approximate a private
@@ -396,7 +396,7 @@ my_parking = Parking()
 <p-prt>print</p-prt>(my_parking.set_garage())  # False
 </pre>
                     </div>
-                    <p>The writeable object properties<a class="ref" href="#ref10"><sup>10</sup></a> can be viewed with the
+                    <p>The writeable object properties<a class="ref" href="#ref11"><sup>11</sup></a> can be viewed with the
                         <code>__dict__</code> special attribute that all class objects/instances take by default.  This dictionary includes
                     all of the attributes created previously as shown below.</p>
                     <div class="code-block">
@@ -424,7 +424,7 @@ my_parking.<p-bi>__dict__</p-bi>[<p-chr>'spaces'</p-chr>] = <p-int>5</p-int>
                     </div>
                     <h3>Class variables</h3>
                     <p>The <strong>instance variable</strong> examples above illustrates that they store instance specific data.
-                        <strong>Class variables</strong> apply to all instances to reflect class-wide data.<a class="ref" href="#ref11"><sup>11</sup></a></p>
+                        <strong>Class variables</strong> apply to all instances to reflect class-wide data.<a class="ref" href="#ref12"><sup>12</sup></a></p>
                     <p>Assuming that the <code>Parking</code> object is needed to track the total number of spaces available, in other words, each time an
                         instance is created a class variable is updated with the number of parking spaces contributed by the instance.  The value held by
                     the class variable can then be returned on request.  Let's amend the class definition as follows.</p>
@@ -476,7 +476,7 @@ amys_parking = Parking(<p-int>10</p-int>)
                     </div>
                     <p>Interestingly, there is a built-in function named <code>hasattr</code> that takes two arguments:
                         an instance name and a variable name; and returns a boolean corresponding to whether the variable name is an
-                    attribute of the class instance.<a class="ref" href="#ref12"><sup>12</sup></a></p>
+                    attribute of the class instance.<a class="ref" href="#ref13"><sup>13</sup></a></p>
                     <div class="code-block">
 <pre>
 <p-prt>print</p-prt>(<p-prt>hasattr</p-prt>(amys_parking, <p-chr>'spaces'</p-chr>))  # True
@@ -490,8 +490,8 @@ amys_parking = Parking(<p-int>10</p-int>)
 
                 </article>
             </section>
-            <section id="section_5" class="main-section">
-                <header><h2>Section 5</h2></header>
+            <section id="methods" class="main-section">
+                <header><h2>Methods</h2></header>
                 <article>
                     <p>Nine</p>
                     <p>Ten</p>
@@ -528,35 +528,39 @@ amys_parking = Parking(<p-int>10</p-int>)
                         July 7, 2023, from
                         <a href="https://peps.python.org/pep-0008/#class-names">https://peps.python.org/pep-0008/#class-names</a>
                     </p>
-                    <p><sup id="ref5">5</sup> The Python Language Reference, 3.3.1 Basic customization, para 3. n.d.
+                    <p><sup id="ref5">5</sup> The Python Tutorial, 9 Classes, 9.3.2 Class objects, para 6. n.d.
+                        Retrieved 12:50, July 16, 2023, from
+                        <a href="https://docs.python.org/3/tutorial/classes.html#class-objects">https://docs.python.org/3/tutorial/classes.html#class-objects</a>
+                    </p>
+                    <p><sup id="ref6">6</sup> The Python Language Reference, 3.3.1 Basic customization, para 3. n.d.
                         Retrieved 13:47, July 9, 2023, from
                         <a href="https://docs.python.org/3/reference/datamodel.html#index-47">https://docs.python.org/3/reference/datamodel.html#index-47</a>
                     </p>
-                    <p><sup id="ref6">6</sup> The Python Tutorial, 9 Classes, 9.3.2 Class objects, para 4. n.d.
+                    <p><sup id="ref7">7</sup> The Python Tutorial, 9 Classes, 9.3.2 Class objects, para 4. n.d.
                         Retrieved 18:40, July 9, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#class-objects">https://docs.python.org/3/tutorial/classes.html#class-objects</a>
                     </p>
-                    <p><sup id="ref7">7</sup> The Python Tutorial, 9 Classes, 9.3.3 Instance objects, para 3. n.d.
+                    <p><sup id="ref8">8</sup> The Python Tutorial, 9 Classes, 9.3.3 Instance objects, para 3. n.d.
                         Retrieved 19:04, July 9, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#instance-objects">https://docs.python.org/3/tutorial/classes.html#instance-objects</a>
                     </p>
-                    <p><sup id="ref8">8</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 1. n.d.
+                    <p><sup id="ref9">9</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 1. n.d.
                         Retrieved 11:39, July 13, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#private-variables">https://docs.python.org/3/tutorial/classes.html#private-variables</a>
                     </p>
-                    <p><sup id="ref9">9</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 5. n.d.
+                    <p><sup id="ref10">10</sup> The Python Tutorial, 9 Classes, 9.6 Private Variables, para 5. n.d.
                         Retrieved 14:09, July 13, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#private-variables">https://docs.python.org/3/tutorial/classes.html#private-variables</a>
                     </p>
-                    <p><sup id="ref10">10</sup> The Python Standard Library, Built-in Types, Special Attributes, para 2. n.d.
+                    <p><sup id="ref11">11</sup> The Python Standard Library, Built-in Types, Special Attributes, para 2. n.d.
                         Retrieved 20:49, July 14, 2023, from
                         <a href="https://docs.python.org/3/library/stdtypes.html#special-attributes">https://docs.python.org/3/library/stdtypes.html#special-attributes</a>
                     </p>
-                    <p><sup id="ref11">11</sup> The Python Tutorial, 9 Classes, 9.3.5 Class and Instance Variables, para 1. n.d.
+                    <p><sup id="ref12">12</sup> The Python Tutorial, 9 Classes, 9.3.5 Class and Instance Variables, para 1. n.d.
                         Retrieved 14:09, July 13, 2023, from
                         <a href="https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables">https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables</a>
                     </p>
-                    <p><sup id="ref12">12</sup>The Python Standard Library, Built-in Functions, hasattr, para 1. n.d.,
+                    <p><sup id="ref13">13</sup>The Python Standard Library, Built-in Functions, hasattr, para 1. n.d.,
                         Retrieved 21:01, July 15, 2023, from
                         <a href="https://docs.python.org/3/library/functions.html#hasattr">https://docs.python.org/3/library/functions.html#hasattr</a>
                     </p>
