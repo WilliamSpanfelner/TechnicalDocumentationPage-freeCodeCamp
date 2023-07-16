@@ -493,20 +493,115 @@ amys_parking = Parking(<p-int>10</p-int>)
             <section id="methods" class="main-section">
                 <header><h2>Methods</h2></header>
                 <article>
-                    <p>Nine</p>
-                    <p>Ten</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae sapiente,
-                        quas fuga numquam expedita totam labore ullam, eos eaque facere voluptatum
-                        consequatur quisquam beatae, aspernatur blanditiis esse nam et quae provident
-                        architecto id temporibus aperiam distinctio eligendi. Repudiandae, ex optio!</p>
-                    <code>Five</code>
-                    <ul>
-                        <li>One</li>
-                        <li>Two</li>
-                        <li>Three</li>
-                        <li>Four</li>
-                        <li>Five</li>
-                    </ul>
+                    <p>A <strong>method</strong> is a function contained within a class object.  An instance method must have
+                    at least one parameter, the first of which should be <code>self</code> which serves to identify the object
+                        invoking the method.  Below, a <code>Thing</code> class object is defined with an <code>instance_method</code> method
+                    taking only a <code>self</code> parameter.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Thing:
+    <p-kw>def</p-kw><p-name> instance_method</p-name>(<p-slf>self</p-slf>):
+        <p-kw>return</p-kw><p-chr> "Instance method invoked"</p-chr>
+</pre>
+                    </div>
+                    <p>Creating an instance of the <code>Thing</code> class object and printing the result of calling the <code>instance_method</code>
+                        is as follows.</p>
+                    <div class="code-block">
+<pre>
+thing_1 = Thing()
+<p-prt>print</p-prt>(thing_1.instance_method())  # Instance method invoked
+</pre>
+                    </div>
+                    <p>Amending the class object definition so that the instance method takes an additional parameter named
+                        <code>num</code> will look like this.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Thing:
+    <p-kw>def</p-kw><p-name> instance_method</p-name>(<p-slf>self</p-slf>, num=<p-int>0</p-int>):
+        <p-kw>return</p-kw><p-chr> "Instance method invoked with a "</p-chr>, num
+</pre>
+                    </div>
+                    <div class="note">
+                        <aside>Note: A tuple will be returned from <code>instance_method</code></aside>
+                    </div>
+                    <p>Printing the result of invoking the <code>instance_method</code> on <code>thing_1</code> with an argument
+                        value of three yeilds the following result.</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(thing_1.instance_method(<p-int>3</p-int>))
+# ('Instance method invoked with a ', 3)
+</pre>
+                    </div>
+                    <p>Adding a class variable to the <code>Thing</code> class object and assigning a value to it can be accessed
+                        by the instance method using self and standard dot notation. </p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Thing:
+    box = 1
+
+    <p-kw>def</p-kw><p-name> instance_method</p-name>(<p-slf>self</p-slf>, num=<p-int>0</p-int>):
+        <p-kw>return</p-kw><p-chr> "Instance method invoked with a "</p-chr>, num, <p-chr>"and "</p-chr>, self.box, <p-chr>"box"</p-chr>
+</pre>
+                    </div>
+                    <p>Printing the results as before:</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(thing_1.instance_method(<p-int>3</p-int>))
+# ('Instance method invoked with a ', 3, 'and ', 1, 'box')
+</pre>
+                    </div>
+
+                    <p>Likewise, <code>self</code> can be used to invoke other methods within the class object definition.</p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Thing:
+    box = 1
+
+    <p-kw>def</p-kw><p-name> unbox</p-name>(<p-slf>self</p-slf>):
+        <p-kw>return</p-kw><p-chr>"Thing unboxed"</p-chr>
+
+    <p-kw>def</p-kw><p-name> instance_method</p-name>(<p-slf>self</p-slf>, num=<p-int>0</p-int>):
+        <p-slf>self.unbox()</p-slf>
+        <p-kw>return</p-kw><p-chr> "Instance method invoked, "</p-chr> + contents + <p-chr> " with a "</p-chr>, num, <p-chr>"and "</p-chr>, <p-slf>self</p-slf>.box, <p-chr>"box"</p-chr>
+</pre>
+                    </div>
+                    <p>The results are as follows:</p>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(thing_1.instance_method(<p-int>3</p-int>))
+# ('Instance method invoked, Thing unboxed with a ', 3, 'and ', 1, 'box')
+</pre>
+                    </div>
+                    <p><strong>Name mangling</strong> also applies to methods.  Let's create a "protected" instance method named
+                        <code>__deploy_net</code> and then call it using name mangling syntax. </p>
+                    <div class="code-block">
+<pre>
+<p-kw>class</p-kw> Thing:
+    box = 1
+
+    <p-kw>def</p-kw><p-name> unbox</p-name>(<p-slf>self</p-slf>):
+        <p-kw>return</p-kw><p-chr>"Thing unboxed"</p-chr>
+
+    <p-kw>def</p-kw><p-name> instance_method</p-name>(<p-slf>self</p-slf>, num=<p-int>0</p-int>):
+        <p-slf>self.unbox()</p-slf>
+        <p-kw>return</p-kw><p-chr> "Instance method invoked, "</p-chr> + contents + <p-chr> " with a "</p-chr>, num, <p-chr>"and "</p-chr>, <p-slf>self</p-slf>.box, <p-chr>"box"</p-chr>
+
+    <p-kw>def</p-kw><p-name> __deploy_net</p-name>(<p-slf>self</p-slf>):
+        <p-kw>return</p-kw><p-chr> "Thing is now caught in the net"</p-chr>
+</pre>
+                    </div>
+                    <div class="code-block">
+<pre>
+<p-prt>print</p-prt>(thing_1._Thing__deploy_net())
+# Thing is now caught in the net.
+</pre>
+                    </div>
+                    <p>There are also at least two other method types that are available in Python: the <strong>class
+                        method</strong> and the <strong>static method</strong>.  A class method takes a <code>cls</code> parameter \
+                        and is marked with a <code>@classmethod</code> decorator.  Class methods do not have access to <code>self</code>
+                        but can affect the entire class state.  Static methods are marked with a <code>@staticmethod</code> and can take parameters
+                        like any other function.  Static methods cannot modify object or class state.<a class="ref" href="#ref14"><sup>14
+                        </sup></a></p>
                 </article>
             </section>
             <section id="references" class="main-section">
@@ -564,8 +659,10 @@ amys_parking = Parking(<p-int>10</p-int>)
                         Retrieved 21:01, July 15, 2023, from
                         <a href="https://docs.python.org/3/library/functions.html#hasattr">https://docs.python.org/3/library/functions.html#hasattr</a>
                     </p>
-
-                    <a href="#cite_note-ub-old-web-solid-1">[1]</a>
+                    <p><sup id="ref14">14</sup>Real Python, Python's Instance, Class, and Static Methods Demystified, para 3 - 5. n.d.,
+                        Retrieved 21:50, July 16, 2023, from
+                        <a href="https://realpython.com/instance-class-and-static-methods-demystified/#instance-methods">https://realpython.com/instance-class-and-static-methods-demystified/#instance-methods</a>
+                    </p>
                 </article>
             </section>
         </div>
